@@ -1,20 +1,20 @@
-#python dependancy
-FROM python:3.10
+# Use official Python image
+FROM python:3.12
 
-#create app directory
+# Create and set working directory
 WORKDIR /app
 
-#copy package files first
-COPY requrements.txt ./
+# Copy dependency file first (spelling fixed: requirements.txt)
+COPY requirements.txt ./
 
-#install required build dependancies
-RUN pip install -r requrements.txt
+# Install dependencies
+RUN pip install --no-cache-dir -r requirements.txt
 
-#copy all other project files
+# Copy all remaining project files
 COPY . .
 
-#expose app port
+# Expose the app port
 EXPOSE 5000
 
-#run app
-CMD [ "python", "app.py" ]
+# Run the app
+CMD ["python", "app.py"]
